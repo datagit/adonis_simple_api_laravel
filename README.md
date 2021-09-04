@@ -121,4 +121,18 @@ adonis migration:run
 #Database migrated successfully in 435 ms
 
 adonis migration:rollback
+
+#make modle and migration and controller
+adonis make:model Customer --migration --controller
+#✔ create  app/Models/Customer.js
+#✔ create  database/migrations/1630744831988_customer_schema.js
+#✔ create  app/Controllers/Http/CustomerController.js
+
+adonis make:model Project --migration --controller
+adonis make:model Task --migration --controller
+
+# SQL query builder for Postgres, MSSQL, MySQL, MariaDB, SQLite3, Oracle, and Amazon Redshift -> https://knexjs.org/
+# Schema-string, Schema-text, Schema-foreign
+
+adonis migration:run
 ```
