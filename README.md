@@ -135,4 +135,10 @@ adonis make:model Task --migration --controller
 # Schema-string, Schema-text, Schema-foreign
 
 adonis migration:run
+
+# show list route
+adonis route:list
+
+# AdonisJS Tutorial - Query Builder and Lucid ORM [ Build a Simple API - Part 6 ]
+# https://www.youtube.com/watch?v=C3T_TWpZFaY&list=PLoCq0WM_wHG-rFQEsShMQkgGcTO1Hmnvx&index=6
 ```

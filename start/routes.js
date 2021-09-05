@@ -19,3 +19,8 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
+
+// Resourceful routes and controllers
+Route.resource('customers', 'CustomerController')
+Route.resource('projects', 'ProjectController')
+Route.resource('tasks', 'TaskController')
