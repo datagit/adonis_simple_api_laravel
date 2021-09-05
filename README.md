@@ -155,4 +155,6 @@ adonis make:middleware FindCustomer
 # validator form and model
 # https://legacy.adonisjs.com/docs/4.1/validator
 adonis install @adonisjs/validator
+
+# logger -> https://legacy.adonisjs.com/docs/4.1/logger#_configuration
 ```

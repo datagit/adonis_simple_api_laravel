@@ -23,6 +23,23 @@ class CustomerController {
     const customer = await Customer.all();
     // SQL: SELECT * from "customer" ORDER BY "id" DESC;
 
+    const Logger = use("Logger");
+    Logger.transport("file").info("request url is ", { url: request.url()});
+
+    // Logger.info("request url is %s", request.url());
+
+    Logger.info("request details %j", {
+      url: request.url(),
+      // user: auth.user.username(),
+      customer: customer,
+    });
+
+    Logger.transport("file").info("request details", {
+      url: request.url(),
+      // user: auth.user.username(),
+      customer: customer,
+    });
+
     response.status(200).json({
       greeting: "Here are your customers from index",
       data: customer,
@@ -48,7 +65,7 @@ class CustomerController {
     };
     const validation = await validate(request.all(), rules);
     if (validation.fails()) {
-      console.log('fail validation');
+      console.log("fail validation");
       console.log(validation.messages());
     }
 
