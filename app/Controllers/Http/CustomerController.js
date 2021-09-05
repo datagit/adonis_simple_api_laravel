@@ -63,18 +63,25 @@ class CustomerController {
    */
   async show({ params: { id }, request, response }) {
     // http://127.0.0.1:3333/customers/1
-    const customer = await Customer.find(id);
-    if (customer) {
-      response.status(200).json({
-        message: "Here is your customer in show.",
-        data: customer,
-      });
-    } else {
-      response.status(404).json({
-        message: "Customer not found",
-        data: id,
-      });
-    }
+
+    // const customer = await Customer.find(id)
+    // if (customer) {
+    //   response.status(200).json({
+    //     message: "Here is your customer in show.",
+    //     data: customer,
+    //   })
+    // } else {
+    //   response.status(404).json({
+    //     message: "Customer not found",
+    //     data: id,
+    //   })
+    // }
+    // get object from middlware
+    const { customer } = request.post();
+    response.status(200).json({
+      message: "Here is your customer in show.",
+      data: customer,
+    });
   }
 
   /**
@@ -86,25 +93,34 @@ class CustomerController {
    * @param {Response} ctx.response
    */
   async update({ params: { id }, request, response }) {
-    // const { name, description } = request.post();
+    // const { name, description } = request.post()
     const { name, description } = request.only(["name", "description"]);
 
     // const customer = await Customer.findOrFail(id)
-    const customer = await Customer.find(id);
-    if (customer) {
-      customer.name = name;
-      customer.description = description;
-      await customer.save();
-      response.status(200).json({
-        message: "Successfully created a new customer.",
-        data: customer,
-      });
-    } else {
-      response.status(404).json({
-        message: "Customer not found",
-        data: id,
-      });
-    }
+    // const customer = await Customer.find(id);
+    // if (customer) {
+    //   customer.name = name;
+    //   customer.description = description;
+    //   await customer.save();
+    //   response.status(200).json({
+    //     message: "Successfully created a new customer.",
+    //     data: customer,
+    //   });
+    // } else {
+    //   response.status(404).json({
+    //     message: "Customer not found",
+    //     data: id,
+    //   });
+    // }
+    // get object from middlware
+    const { customer } = request.post();
+    customer.name = name;
+    customer.description = description;
+    await customer.save();
+    response.status(200).json({
+      message: "Successfully created a new customer.",
+      data: customer,
+    });
   }
 
   /**
@@ -116,19 +132,26 @@ class CustomerController {
    * @param {Response} ctx.response
    */
   async destroy({ params: { id }, request, response }) {
-    const customer = await Customer.find(id);
-    if (customer) {
-      await customer.delete();
-      response.status(200).json({
-        message: "Successfully created a new customer.",
-        id,
-      });
-    } else {
-      response.status(404).json({
-        message: "Customer not found",
-        data: id,
-      });
-    }
+    // const customer = await Customer.find(id);
+    // if (customer) {
+    //   await customer.delete();
+    //   response.status(200).json({
+    //     message: "Successfully created a new customer.",
+    //     id,
+    //   });
+    // } else {
+    //   response.status(404).json({
+    //     message: "Customer not found",
+    //     data: id,
+    //   });
+    // }
+    // get object from middlware
+    const { customer } = request.post();
+    await customer.delete();
+    response.status(200).json({
+      message: "Successfully created a new customer.",
+      id,
+    });
   }
 }
 

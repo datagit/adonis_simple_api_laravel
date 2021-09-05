@@ -141,4 +141,15 @@ adonis route:list
 
 # AdonisJS Tutorial - Query Builder and Lucid ORM [ Build a Simple API - Part 6 ]
 # https://www.youtube.com/watch?v=C3T_TWpZFaY&list=PLoCq0WM_wHG-rFQEsShMQkgGcTO1Hmnvx&index=6
+
+# Middleware -> https://docs.adonisjs.com/guides/middleware
+adonis make:middleware FindCustomer
+#> Select middleware type For HTTP requests
+#✔ create  app/Middleware/FindCustomer.js
+
+#👉   Register middleware as follows
+
+#→ Open start/kernel.js file
+#→ Register App/Middleware/FindCustomer under global or named middleware
+
 ```
