@@ -1,4 +1,5 @@
 "use strict";
+const { validate } = use("Validator");
 const Customer = use("App/Models/Customer");
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -37,6 +38,20 @@ class CustomerController {
    * @param {Response} ctx.response
    */
   async store({ request, response }) {
+    /**
+     * Schema definition
+     */
+    // https://legacy.adonisjs.com/docs/4.1/validator
+    const rules = {
+      namee: "required",
+      description: "required",
+    };
+    const validation = await validate(request.all(), rules);
+    if (validation.fails()) {
+      console.log('fail validation');
+      console.log(validation.messages());
+    }
+
     // const { name, description } = request.post();
     // const customer = new Customer();
     // customer.name = name;

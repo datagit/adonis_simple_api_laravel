@@ -152,4 +152,7 @@ adonis make:middleware FindCustomer
 #→ Open start/kernel.js file
 #→ Register App/Middleware/FindCustomer under global or named middleware
 
+# validator form and model
+# https://legacy.adonisjs.com/docs/4.1/validator
+adonis install @adonisjs/validator
 ```
