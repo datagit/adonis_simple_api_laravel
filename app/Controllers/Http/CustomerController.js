@@ -10,21 +10,35 @@ const Customer = use("App/Models/Customer");
  */
 class CustomerController {
   /**
-   * Show a list of all customers.
-   * GET customers
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
+   * @swagger
+   * /api/v1/customers:
+   *   get:
+   *     tags:
+   *       - Customers
+   *     summary: Sample API
+   *     responses:
+   *       200:
+   *         description: Send hello message
+   *         example:
+   *           message: Hello Guess
    */
+  /*
+  1. Importing the Customer model from the models folder.
+  2. Importing the Logger class from the core folder.
+  3. Creating a new instance of the Logger class.
+  4. Creating a new instance of the Customer model.
+  5. Calling the all() method on the Customer model.
+  6. Logging the request details to the console.
+  7. Logging the request details to a file.
+  8. Returning the customers to the client.
+  */
   async index({ request, response }) {
     // http://127.0.0.1:3333/customers
     const customer = await Customer.all();
     // SQL: SELECT * from "customer" ORDER BY "id" DESC;
 
     const Logger = use("Logger");
-    Logger.transport("file").info("request url is ", { url: request.url()});
+    Logger.transport("file").info("request url is ", { url: request.url() });
 
     // Logger.info("request url is %s", request.url());
 
@@ -54,6 +68,13 @@ class CustomerController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
+  /*
+  1. We are importing the Customer model from the models folder.
+  2. We are defining a schema for the validation.
+  3. We are creating a new Customer instance and passing the request data to it.
+  4. We are saving the new customer instance.
+  5. We are returning a response with a success message and the new customer instance.
+  */
   async store({ request, response }) {
     /**
      * Schema definition
@@ -93,6 +114,9 @@ class CustomerController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
+  /*
+  Time Complexity: O(1)
+  */
   async show({ params: { id }, request, response }) {
     // http://127.0.0.1:3333/customers/1
 

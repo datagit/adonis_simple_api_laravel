@@ -11,6 +11,12 @@ class FindCustomer {
    * @param {Request} ctx.request
    * @param {Function} next
    */
+  /*
+  1. It’s using the async/await syntax to call the next middleware in the chain.
+  2. It’s using the params object to get the id from the URL.
+  3. It’s using the request object to set the customer on the request object.
+  4. It’s using the response object to send a 404 response if the customer is not found.
+  */
   async handle({ params: { id }, request, response }, next) {
     // call next to advance the request
     console.log("Middleware Fired!")

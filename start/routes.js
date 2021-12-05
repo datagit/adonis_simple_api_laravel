@@ -21,17 +21,17 @@ Route.get("/", () => {
 });
 
 // Resourceful routes and controllers
-Route.get("customers", "CustomerController.index");
-Route.get("customers/:id", "CustomerController.show").middleware([
+Route.get("api/v1/customers", "CustomerController.index");
+Route.get("api/v1/customers/:id", "CustomerController.show").middleware([
   "findCustomer",
 ]);
-Route.post("customers", "CustomerController.store");
-Route.put("customers/:id", "CustomerController.update").middleware([
+Route.post("api/v1/customers", "CustomerController.store");
+Route.put("api/v1/customers/:id", "CustomerController.update").middleware([
   "findCustomer",
 ]);
-Route.delete("customers/:id", "CustomerController.destroy").middleware([
+Route.delete("api/v1/customers/:id", "CustomerController.destroy").middleware([
   "findCustomer",
 ]);
 
-Route.resource("projects", "ProjectController");
-Route.resource("tasks", "TaskController");
+Route.resource("api/v1/projects", "ProjectController");
+Route.resource("api/v1/tasks", "TaskController");

@@ -111,7 +111,7 @@ tree -I 'node_modules|cache|test_*'
 docker compose up -d
 docker compose down
 
-mysql -u root -p'root' -h 127.0.0.1 -P 3307
+mysql -u root -p'123Strong' -h 127.0.0.1 -P 3306
 
 npm install mysql --save
 
@@ -157,4 +157,25 @@ adonis make:middleware FindCustomer
 adonis install @adonisjs/validator
 
 # logger -> https://legacy.adonisjs.com/docs/4.1/logger#_configuration
+
+# api doc: https://github.com/ahmadarif/adonis-swagger
+npm i adonis-swagger
+# update doc and export
+adonis swagger:export
+
+# update code for build docs
+```
+
+#### cal api by Postman
+```java
+// show all routes in app
+adonis route:list
+
+// call api create customers
+curl --location --request POST 'http://127.0.0.1:3333/api/v1/customers' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "dat3",
+    "description": "abc 333"
+}'
 ```
